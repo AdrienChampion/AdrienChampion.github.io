@@ -142,13 +142,13 @@
                     <main>
                         <a class="header" href="#using-techelson-with-liquidity" id="using-techelson-with-liquidity"><h1>Using Techelson With Liquidity</h1></a>
 <p><a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a> is a Test Execution Engine for <a href="https://tezos.gitlab.io/master/whitedoc/michelson.html" title="Michelson's documentation">Michelson</a> smart contracts developed by myself at
-<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of <a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">techelson</a>, here is a relatively simple setup to
-combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">liquidity</a> locally, command-line style. Very little knowledge about techelson
-is required. This post only assumes some familiarity with liquidity.</p>
+<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of <a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a>, here is a relatively simple setup to
+combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">Liquidity</a> locally, command-line style. Very little knowledge about Techelson
+is required. This post only assumes some familiarity with Liquidity.</p>
 <p>Liquidity has a nice feature allowing to <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">declare extensions to the language</a>. Turns out they are
-powerful enough to generate techelson's special instructions: you can write your tests directly in
-liquidity, and have a few lines of <code>bash</code> run the tests for you.</p>
-<p>First, make sure you have liquidity and techelson in your path. I'll assume they are called
+powerful enough to generate Techelson's special instructions: you can write your tests directly in
+Liquidity, and have a few lines of <code>bash</code> run the tests for you.</p>
+<p>First, make sure you have Liquidity and Techelson in your path. I'll assume they are called
 <code>liquidity</code> and <code>techelson</code>. Let's structure things a bit and have the working directory look like
 this:</p>
 <pre><code>.
@@ -158,10 +158,10 @@ this:</p>
 └── tests
     └── &quot;tests go here&quot;
 </code></pre>
-<p>The first step is to teach liquidity to generate techelson special instruction and setup a tiny
+<p>The first step is to teach Liquidity to generate Techelson special instruction and setup a tiny
 test script in <a href="extensions.html" title="Liquidity extension section">Liquidity Extensions</a>. Then test our setup on a <a href="basic.html" title="Basic example section">Basic Example</a>. After I will show
 how to write a test for an external, non-trivial contract in <a href="external.html" title="External contract example section">External Contract Example</a>, using
-more advanced techelson commands. Finally, there's <a href="end.html" title="The end section">The End</a> at the end.</p>
+more advanced Techelson commands. Finally, there's <a href="end.html" title="The end section">The End</a> at the end.</p>
 <p>There is a listing of all the files used in this post in the <a href="listing.html" title="File Listing section">File Listing</a> section. Also, they are
 available <a href="https://github.com/AdrienChampion/AdrienChampion.github.io/tree/master/blog/tezos/techelson/with_liquidity/rsc" title="All files used in this post">here</a>.</p>
 

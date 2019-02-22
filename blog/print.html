@@ -175,13 +175,13 @@ problems stemming from higher-order program verification.</p>
 <a class="header" href="#michelsonliquidity" id="michelsonliquidity"><h1>Michelson/Liquidity</h1></a>
 <a class="header" href="#using-techelson-with-liquidity" id="using-techelson-with-liquidity"><h1>Using Techelson With Liquidity</h1></a>
 <p><a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a> is a Test Execution Engine for <a href="https://tezos.gitlab.io/master/whitedoc/michelson.html" title="Michelson's documentation">Michelson</a> smart contracts developed by myself at
-<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of <a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">techelson</a>, here is a relatively simple setup to
-combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">liquidity</a> locally, command-line style. Very little knowledge about techelson
-is required. This post only assumes some familiarity with liquidity.</p>
+<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of <a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a>, here is a relatively simple setup to
+combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">Liquidity</a> locally, command-line style. Very little knowledge about Techelson
+is required. This post only assumes some familiarity with Liquidity.</p>
 <p>Liquidity has a nice feature allowing to <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">declare extensions to the language</a>. Turns out they are
-powerful enough to generate techelson's special instructions: you can write your tests directly in
-liquidity, and have a few lines of <code>bash</code> run the tests for you.</p>
-<p>First, make sure you have liquidity and techelson in your path. I'll assume they are called
+powerful enough to generate Techelson's special instructions: you can write your tests directly in
+Liquidity, and have a few lines of <code>bash</code> run the tests for you.</p>
+<p>First, make sure you have Liquidity and Techelson in your path. I'll assume they are called
 <code>liquidity</code> and <code>techelson</code>. Let's structure things a bit and have the working directory look like
 this:</p>
 <pre><code>.
@@ -191,14 +191,14 @@ this:</p>
 └── tests
     └── &quot;tests go here&quot;
 </code></pre>
-<p>The first step is to teach liquidity to generate techelson special instruction and setup a tiny
+<p>The first step is to teach Liquidity to generate Techelson special instruction and setup a tiny
 test script in <a href="tezos/techelson/with_liquidity/extensions.html" title="Liquidity extension section">Liquidity Extensions</a>. Then test our setup on a <a href="tezos/techelson/with_liquidity/basic.html" title="Basic example section">Basic Example</a>. After I will show
 how to write a test for an external, non-trivial contract in <a href="tezos/techelson/with_liquidity/external.html" title="External contract example section">External Contract Example</a>, using
-more advanced techelson commands. Finally, there's <a href="tezos/techelson/with_liquidity/end.html" title="The end section">The End</a> at the end.</p>
+more advanced Techelson commands. Finally, there's <a href="tezos/techelson/with_liquidity/end.html" title="The end section">The End</a> at the end.</p>
 <p>There is a listing of all the files used in this post in the <a href="tezos/techelson/with_liquidity/listing.html" title="File Listing section">File Listing</a> section. Also, they are
 available <a href="https://github.com/AdrienChampion/AdrienChampion.github.io/tree/master/blog/tezos/techelson/with_liquidity/rsc" title="All files used in this post">here</a>.</p>
 <a class="header" href="#liquidity-extensions" id="liquidity-extensions"><h2>Liquidity Extensions</h2></a>
-<p>The first step is to declare the <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">liquidity extensions</a> we need. Let's create a <a href="tezos/techelson/with_liquidity/listing.html#teststechelliq" title="Techelson extensions for liquidity">tests/techel.liq</a>
+<p>The first step is to declare the <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">Liquidity extensions</a> we need. Let's create a <a href="tezos/techelson/with_liquidity/listing.html#teststechelliq" title="Techelson extensions for liquidity">tests/techel.liq</a>
 to write our extensions into:</p>
 <pre><code class="language-ocaml">external get_balance :
     [%stack: address] -&gt; [%stack: tez]
@@ -235,13 +235,13 @@ that address</li>
 where all operations created appear to have been created by whatever is at <code>address</code></li>
 <li><code>must_fail op</code>: tells techelson that the operation <code>op</code> must fail</li>
 </ul>
-<p>Thanks to liquidity's file import mechanism, we can use these functions in any liquidity file
-<code>test.liq</code> with <code>Techel.get_balance</code>, <code>Techel.get_storage</code> <em>etc.</em> by simply calling liquidity as
+<p>Thanks to Liquidity's file import mechanism, we can use these functions in any Liquidity file
+<code>test.liq</code> with <code>Techel.get_balance</code>, <code>Techel.get_storage</code> <em>etc.</em> by simply calling Liquidity as
 follows:</p>
 <pre><code>$ liquidity tests/techel.liq test.liq
 </code></pre>
 <p>So let's fill in the <code>test.sh</code> file so that it runs our tests. It takes the path to our (future)
-liquidity test file(s) as argument, and compiles along with all the contracts in <code>contracts/</code> and
+Liquidity test file(s) as argument, and compiles along with all the contracts in <code>contracts/</code> and
 the extensions we just defined.</p>
 <pre><code class="language-bash">#! /bin/bash
 
@@ -554,7 +554,7 @@ name of an existing outsider. What we should do is say that this transfer must f
 </code></pre>
 <a class="header" href="#testing-multi" id="testing-multi"><h3>Testing Multi</h3></a>
 <p>Let's now make the transfer work by pretending to be <code>root</code>. The current solution for this is not
-very satisfactory, but it will do the job until techelson is more tightly integrated in liquidity.
+very satisfactory, but it will do the job until techelson is more tightly integrated in Liquidity.
 The result is <a href="tezos/techelson/with_liquidity/listing.html#teststest2liq" title="Test2 test file">tests/test2.liq</a>, where we add:</p>
 <pre><code class="language-ocaml">    let bad_add_client =
         Contract.call ~dest:main_instance ~amount:0tz ~entry:add_client ~parameter:(
@@ -741,8 +741,8 @@ Error
     1 of the 1 testcase failed
 </code></pre>
 <a class="header" href="#the-end" id="the-end"><h1>The End</h1></a>
-<p>That's it. I believe this is enough to get some liquidity enthusiasts interested in techelson and
-its future integration in the liquidity ecosystem. The process will be much more streamlined soon and will most likely remove the need for defining liquidity extensions.</p>
+<p>That's it. I believe this is enough to get some Liquidity enthusiasts interested in techelson and
+its future integration in the Liquidity ecosystem. The process will be much more streamlined soon and will most likely remove the need for defining Liquidity extensions.</p>
 <p>The next section is a listing of all the scripts, contracts and test files used in this post.</p>
 <a class="header" href="#file-listing" id="file-listing"><h1>File Listing</h1></a>
 <p>Including all files mentioned in this post, the layout should look like this</p>

@@ -284,7 +284,7 @@ name of an existing outsider. What we should do is say that this transfer must f
 </code></pre>
 <a class="header" href="#testing-multi" id="testing-multi"><h3>Testing Multi</h3></a>
 <p>Let's now make the transfer work by pretending to be <code>root</code>. The current solution for this is not
-very satisfactory, but it will do the job until techelson is more tightly integrated in liquidity.
+very satisfactory, but it will do the job until techelson is more tightly integrated in Liquidity.
 The result is <a href="listing.html#teststest2liq" title="Test2 test file">tests/test2.liq</a>, where we add:</p>
 <pre><code class="language-ocaml">    let bad_add_client =
         Contract.call ~dest:main_instance ~amount:0tz ~entry:add_client ~parameter:(
