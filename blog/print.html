@@ -141,7 +141,7 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="#welcome" id="welcome"><h1>Welcome</h1></a>
-<p>This blog discusses various topics, mostly about <a href="https://tezos.com/" title="Tezos official page">tezos</a> smart contracts, software safety
+<p>This blog discusses various topics, mostly about <a href="https://tezos.com/" title="Tezos official page">tezos</a> smart contracts, and software safety
 (verification). You can find a list of the latest posts <a href="welcome/latest.html" title="This blog's latest posts">here</a>.</p>
 <p>Articles (should) be sorted by the topics they discuss:</p>
 <ul>
@@ -195,7 +195,8 @@ this:</p>
 test script in <a href="tezos/techelson/with_liquidity/extensions.html" title="Liquidity extension section">Liquidity Extensions</a>. Then test our setup on a <a href="tezos/techelson/with_liquidity/basic.html" title="Basic example section">Basic Example</a>. After I will show
 how to write a test for an external, non-trivial contract in <a href="tezos/techelson/with_liquidity/external.html" title="External contract example section">External Contract Example</a>, using
 more advanced techelson commands. Finally, there's <a href="tezos/techelson/with_liquidity/end.html" title="The end section">The End</a> at the end.</p>
-<p>There is a listing of all the files used in this post in the <a href="tezos/techelson/with_liquidity/listing.html" title="File Listing section">File Listing</a> section.</p>
+<p>There is a listing of all the files used in this post in the <a href="tezos/techelson/with_liquidity/listing.html" title="File Listing section">File Listing</a> section. Also, they are
+available <a href="https://github.com/AdrienChampion/AdrienChampion.github.io/tree/master/blog/tezos/techelson/with_liquidity/rsc" title="All files used in this post">here</a>.</p>
 <a class="header" href="#liquidity-extensions" id="liquidity-extensions"><h2>Liquidity Extensions</h2></a>
 <p>The first step is to declare the <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">liquidity extensions</a> we need. Let's create a <a href="tezos/techelson/with_liquidity/listing.html#teststechelliq" title="Techelson extensions for liquidity">tests/techel.liq</a>
 to write our extensions into:</p>
@@ -1535,21 +1536,6 @@ let%entry drain (name : string) (storage : storage) =
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

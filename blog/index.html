@@ -141,7 +141,7 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="#welcome" id="welcome"><h1>Welcome</h1></a>
-<p>This blog discusses various topics, mostly about <a href="https://tezos.com/" title="Tezos official page">tezos</a> smart contracts, software safety
+<p>This blog discusses various topics, mostly about <a href="https://tezos.com/" title="Tezos official page">tezos</a> smart contracts, and software safety
 (verification). You can find a list of the latest posts <a href="latest.html" title="This blog's latest posts">here</a>.</p>
 <p>Articles (should) be sorted by the topics they discuss:</p>
 <ul>
@@ -170,21 +170,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

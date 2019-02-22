@@ -162,7 +162,8 @@ this:</p>
 test script in <a href="extensions.html" title="Liquidity extension section">Liquidity Extensions</a>. Then test our setup on a <a href="basic.html" title="Basic example section">Basic Example</a>. After I will show
 how to write a test for an external, non-trivial contract in <a href="external.html" title="External contract example section">External Contract Example</a>, using
 more advanced techelson commands. Finally, there's <a href="end.html" title="The end section">The End</a> at the end.</p>
-<p>There is a listing of all the files used in this post in the <a href="listing.html" title="File Listing section">File Listing</a> section.</p>
+<p>There is a listing of all the files used in this post in the <a href="listing.html" title="File Listing section">File Listing</a> section. Also, they are
+available <a href="https://github.com/AdrienChampion/AdrienChampion.github.io/tree/master/blog/tezos/techelson/with_liquidity/rsc" title="All files used in this post">here</a>.</p>
 
                     </main>
 
@@ -201,21 +202,6 @@ more advanced techelson commands. Finally, there's <a href="end.html" title="The
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
