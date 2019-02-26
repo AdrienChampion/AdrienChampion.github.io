@@ -173,14 +173,20 @@ problems stemming from higher-order program verification.</p>
 <p>I am interested in software safety and strongly-typed high-level languages such as <a href="https://www.rust-lang.org/" title="Rust official page">Rust</a> and
 <a href="http://www.ocaml.org/" title="OCaml official page">OCaml</a>. I still occasionally work on (critical) embedded system verification.</p>
 <a class="header" href="#michelsonliquidity" id="michelsonliquidity"><h1>Michelson/Liquidity</h1></a>
+<ul>
+<li><a href="tezos/techelson/with_liquidity/index.html">Using Techelson With Liquidity</a></li>
+</ul>
 <a class="header" href="#using-techelson-with-liquidity" id="using-techelson-with-liquidity"><h1>Using Techelson With Liquidity</h1></a>
 <p><a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a> is a Test Execution Engine for <a href="https://tezos.gitlab.io/master/whitedoc/michelson.html" title="Michelson's documentation">Michelson</a> smart contracts developed by myself at
-<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of <a href="https://github.com/OCamlPro/techelson" title="Techelson's github repository">Techelson</a>, here is a relatively simple setup to
-combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">Liquidity</a> locally, command-line style. Very little knowledge about Techelson
-is required. This post only assumes some familiarity with Liquidity.</p>
+<a href="https://www.ocamlpro.com/" title="OCamlPro's official page">OCamlPro</a>. With the (upcoming) release of Techelson, here is a relatively simple (although a bit
+dirty) setup to combine it with <a href="http://www.liquidity-lang.org/" title="Liquidity's official page">Liquidity</a> locally, command-line style. Very little knowledge
+about Techelson is required. This post only assumes some familiarity with Liquidity.</p>
+<blockquote>
+<p><strong>NB</strong>: if you want to learn more about Techelson, make sure to read its <a href="http://www.liquidity-lang.org/techelson/doc/" title="Techelson's documentation.">user documentation</a>.</p>
+</blockquote>
 <p>Liquidity has a nice feature allowing to <a href="http://www.liquidity-lang.org/doc/reference/liquidity.html#extended-primitives" title="Liquidity's extensions">declare extensions to the language</a>. Turns out they are
 powerful enough to generate Techelson's special instructions: you can write your tests directly in
-Liquidity, and have a few lines of <code>bash</code> run the tests for you.</p>
+Liquidity, and tiny script run the tests for you.</p>
 <p>First, make sure you have Liquidity and Techelson in your path. I'll assume they are called
 <code>liquidity</code> and <code>techelson</code>. Let's structure things a bit and have the working directory look like
 this:</p>
@@ -240,9 +246,17 @@ where all operations created appear to have been created by whatever is at <code
 follows:</p>
 <pre><code>$ liquidity tests/techel.liq test.liq
 </code></pre>
+<blockquote>
+<p><strong>NB</strong>: you only need to write <code>tests/techel.liq</code> once, and make sure you pass it to Liquidity
+when compiling your testcases, as in <code>test.sh</code> below.</p>
+</blockquote>
 <p>So let's fill in the <code>test.sh</code> file so that it runs our tests. It takes the path to our (future)
-Liquidity test file(s) as argument, and compiles along with all the contracts in <code>contracts/</code> and
-the extensions we just defined.</p>
+Liquidity test file(s) as argument, and compiles it/them along with all the contracts in
+<code>contracts/</code> and the extensions we just defined. So, given some file <code>tests/test.liq</code>, the script</p>
+<ul>
+<li>generates <code>tests/test.liq.techel</code>: contains the testcase and the contract(s) to test, and</li>
+<li>runs techelson on <code>tests/test.liq.techel</code>.</li>
+</ul>
 <pre><code class="language-bash">#! /bin/bash
 
 set -e
@@ -269,6 +283,11 @@ echo
 techelson $target
 
 </code></pre>
+<blockquote>
+<p><strong>Warning</strong>: function <code>start_set_source</code> uses a dirty hack so that it works as a Liquidity
+extension (similar to a SQL injection). This is a temporary solution, eventually this hack will
+not be necessary.</p>
+</blockquote>
 <a class="header" href="#basic-example" id="basic-example"><h2>Basic Example</h2></a>
 <p>Our test is going to be a contract with a <code>unit</code> (empty) storage. Its (only) entry point will take
 a parameter of type <code>unit</code> and inside that entry point will be our test. Entry points must return a

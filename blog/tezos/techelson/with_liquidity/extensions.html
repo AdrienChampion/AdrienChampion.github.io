@@ -183,9 +183,17 @@ where all operations created appear to have been created by whatever is at <code
 follows:</p>
 <pre><code>$ liquidity tests/techel.liq test.liq
 </code></pre>
+<blockquote>
+<p><strong>NB</strong>: you only need to write <code>tests/techel.liq</code> once, and make sure you pass it to Liquidity
+when compiling your testcases, as in <code>test.sh</code> below.</p>
+</blockquote>
 <p>So let's fill in the <code>test.sh</code> file so that it runs our tests. It takes the path to our (future)
-Liquidity test file(s) as argument, and compiles along with all the contracts in <code>contracts/</code> and
-the extensions we just defined.</p>
+Liquidity test file(s) as argument, and compiles it/them along with all the contracts in
+<code>contracts/</code> and the extensions we just defined. So, given some file <code>tests/test.liq</code>, the script</p>
+<ul>
+<li>generates <code>tests/test.liq.techel</code>: contains the testcase and the contract(s) to test, and</li>
+<li>runs techelson on <code>tests/test.liq.techel</code>.</li>
+</ul>
 <pre><code class="language-bash">#! /bin/bash
 
 set -e
@@ -212,6 +220,11 @@ echo
 techelson $target
 
 </code></pre>
+<blockquote>
+<p><strong>Warning</strong>: function <code>start_set_source</code> uses a dirty hack so that it works as a Liquidity
+extension (similar to a SQL injection). This is a temporary solution, eventually this hack will
+not be necessary.</p>
+</blockquote>
 
                     </main>
 
